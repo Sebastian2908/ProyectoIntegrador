@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>
-        Rafael Botello Alegria
-        Juan Sebastian España
-        Hola Mundo
-        tengo mucho suenoo
-    </h1>
-</body>
+    <body>
+        <h2>Formulario de registro</h2>
+
+        <form action="registro.php" method="post">
+            Nombre:
+            <input type="text" name="name" id="name" required> <br>
+
+            apellido:
+            <input type="text" name="lastname" id="lastname" required> <br>
+
+            Correo:
+            <input type="email" name="email" id="email" required><br>
+
+            Contraseña:
+            <input type="password" name="password" id="password" required><br>
+
+            Confirmar Contraseña:
+            <input type="password" name="confirmarPassword" id="confirmarPassword" required ><br>
+
+            <input type="submit" value="Registrarse">
+        </form>
+    </body>
 </html>
