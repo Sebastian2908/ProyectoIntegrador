@@ -15,10 +15,17 @@
             $pdo = new PDO('mysql:host='.$direccionservidor.';dbname='.$baseDatos,$usuarioDB,$contraseniaDB);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//para q el pdo maneje de manera automatica los errores
             $sql="INSERT INTO `proyectointegrador`.`usuarios` (`nombre`, `apellido`, `correo`, `contraseña`, `id_rol`) 
-            VALUES ('Carlos', 'Angulo', 'Carlos@gmail.com', '12345', '2');";
+            VALUES (:nombre, :apellido, :correo, :contraseña, '2');";
 
             $resultado = $pdo -> prepare($sql);
-            $resultado -> execute();
+            $resultado -> execute(array(
+                'nombre' =>$nombre,
+                'apellido' =>$apellido, 
+                'correo' =>$correo,
+                'contraseña' =>$contraseña
+                
+            ));
+            
             
         } catch (PDOException $e) {
             echo "Hubo un error de conexion".$e->getMessage();
