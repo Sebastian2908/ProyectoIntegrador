@@ -18,26 +18,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasenia = "";
     $baseDatos = "proyectointegrador";
 
-    // Crear una nueva conexión a la base de datos
+    
     $conexion = new mysqli($servidor, $usuario, $contrasenia, $baseDatos);
 
-    // Verificar la conexión
+    
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
 
-    // Preparar la consulta SQL para insertar un nuevo usuario
+    
     $sql = "INSERT INTO usuarios (nombre, apellido, correo, contraseña, id_rol) 
             VALUES ('$nombre', '$apellido', '$correo', '$contraseña', 2)";
 
-    // Ejecutar la consulta
+    
     if ($conexion->query($sql) === TRUE) {
         echo "Registro exitoso";
     } else {
         echo "Error al registrar usuario: " . $conexion->error;
     }
 
-    // Cerrar la conexión
+    
     $conexion->close();
 }
 
