@@ -14,16 +14,16 @@
         try {
             $pdo = new PDO('mysql:host='.$direccionservidor.';dbname='.$baseDatos,$usuarioDB,$contraseniaDB);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//para q el pdo maneje de manera automatica los errores
+
             $sql="INSERT INTO `proyectointegrador`.`usuarios` (`nombre`, `apellido`, `correo`, `contraseña`, `id_rol`) 
-            VALUES (:nombre, :apellido, :correo, :contraseña, '2');";
+            VALUES (NULL,:nombre, :apellido, :correo, :contraseña);";
 
             $resultado = $pdo -> prepare($sql);
-            $resultado -> execute(array(
-                'nombre' =>$nombre,
-                'apellido' =>$apellido, 
-                'correo' =>$correo,
-                'contraseña' =>$contraseña
-                
+            $resultado-> execute(array(
+                ':nombre'=>$nombre,
+                ':apellido'=>$apellido,
+                ':correo'=>$correo,
+                ':contraseña'=>$contraseña
             ));
             
             
