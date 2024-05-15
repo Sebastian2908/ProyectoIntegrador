@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($contraseña1 !== $confirmarContraseña) {
         echo "Las contraseñas no coinciden.";
         exit; 
+    }
 
     }
     
