@@ -16,8 +16,25 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
         $sentencia= $pdo->prepare($sql);
         $sentencia->execute(['email'=>$email]);
 
-        $usuarios = $sentencia->fetch(PDO::FETCH_ASSOC);
-        print_r($usuarios);
+        $usuarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        // print_r($usuarios);
+
+        $login=false;
+
+        foreach ($usuarios as $user) {
+
+            if (password_verify($password, $user["password"])) {
+                
+                $login=true;
+            }
+
+        }
+
+        if ($login) {
+            echo "Exite en la DB";
+        }else {
+           echo "No Exte en la DB"
+        }
 
     } catch (PDOException $e) {
         echo "Hubo un error de conexion".$e->getMessage();
