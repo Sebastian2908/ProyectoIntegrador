@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
     $sql = "INSERT INTO usuarios (nombre, apellido, correo, contraseña, id_rol) 
-            VALUES ('$nombre', '$apellido', '$correo', '$contraseña', 2)";
+            VALUES ('$nombre', '$apellido', '$correo', '$contraseña1', 2)";
 
     
     if ($conexion->query($sql) === TRUE) {
