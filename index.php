@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if (!isset($_SESSION['usuario_id'])) {
+        header("Location:login.html");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +15,9 @@
     <title>Document</title>
 </head>
     <body>
+        <a href="cerrar.php">Cerrar sesion</a>
+        <h1>Bienvenid@ <?php echo $_SESSION['usuario_nombre']; ?></h1>
+
         <h2>Reserva tu vuelos</h2>
         <p>vive la mejor experiencia con nosotros</p> 
     </body>

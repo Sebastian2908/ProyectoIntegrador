@@ -1,10 +1,8 @@
 <?php 
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     include("conexion.php");
     $errores=array();
-
-    print_r($_POST);
 
     $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : null;
     $password = isset($_POST['password']) ? $_POST['password'] : null;
@@ -36,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 while ($user = $result->fetch_assoc()) {
                     // Verificar si la contraseña coincide
                     if (password_verify($password, $user["contraseña"])) {
-                        echo "Existe en la base de datos";
+                        $_SESSION['usuario_id']=$user["id"];
+                        $_SESSION['usuario_nombre']=$user["nombre"];
                         
                         header("Location:index.php");
                     } else {
