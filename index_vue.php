@@ -13,8 +13,8 @@ $result = $conexion->query($sql);
         <th>Destino</th>
         <th>Fecha</th>
         <th>Hora</th>
-        <th>Precio</th>
-        <th>Acciones</th>
+        <th>Seccion</th>
+        <th>Aerolinea</th>
     </tr>
     <?php
     if ($result->num_rows > 0) {
@@ -25,7 +25,8 @@ $result = $conexion->query($sql);
                     <td>" . $row["destino"] . "</td>
                     <td>" . $row["fecha"] . "</td>
                     <td>" . $row["hora"] . "</td>
-                    <td>" . $row["precio"] . "</td>
+                    <td>" . $row["seccion"] . "</td>
+                    <td>" . $row["aerolinea"] . "</td>
                     <td><a href='update.php?id=" . $row["id"] . "'>Editar</a> | <a href='delete.php?id=" . $row["id"] . "'>Eliminar</a></td>
                 </tr>";
         }

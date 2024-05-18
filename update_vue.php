@@ -14,9 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $destino = $_POST['destino'];
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
-    $precio = $_POST['precio'];
+    $seccion = $_POST['seccion'];
+    $aerolinea = $_POST['aerolinea'];
 
-    $sql = "UPDATE vuelos SET vuelo_numero='$vuelo_numero', destino='$destino', fecha='$fecha', hora='$hora', precio='$precio' WHERE id=$id";
+    $sql = "UPDATE vuelos SET vuelo_numero='$vuelo_numero', destino='$destino', fecha='$fecha', hora='$hora', seccion='$seccion', aerolinea='$aerolinea' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         echo "Vuelo actualizado exitosamente";
@@ -32,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Destino: <input type="text" name="destino" value="<?php echo $row['destino']; ?>"><br>
     Fecha: <input type="date" name="fecha" value="<?php echo $row['fecha']; ?>"><br>
     Hora: <input type="time" name="hora" value="<?php echo $row['hora']; ?>"><br>
-    Precio: <input type="text" name="precio" value="<?php echo $row['precio']; ?>"><br>
+    Seccion: <input type="text" name="seccion" value="<?php echo $row['seccion']; ?>"><br>
+    Aerolinea: <input type="text" name="aerolinea" value="<?php echo $row['aerolinea']; ?>"><br>
     <button type="submit">Actualizar Vuelo</button>
 </form>
