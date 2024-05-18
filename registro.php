@@ -9,11 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contraseña1 = isset($_POST['password']) ? $_POST['password'] : null;
     $confirmarContraseña = isset($_POST['confirmarPassword']) ? $_POST['confirmarPassword'] : null;
 
-        if ($contraseña1 !== $confirmarContraseña) {
-            echo "Las contraseñas no coinciden.";
-            exit; 
-        }
-
     }
     
     $hashedContraseña = password_hash($contraseña1, PASSWORD_DEFAULT);

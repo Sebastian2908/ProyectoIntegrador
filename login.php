@@ -19,20 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($errores)){
 
         try {
-            // Preparar la consulta SQL para seleccionar usuario por correo
+    
             $sql = "SELECT * FROM usuarios WHERE correo = ?";
             $sentencia = $conexion->prepare($sql);
             $sentencia->bind_param("s", $email);
             $sentencia->execute();
 
-            // Obtener el resultado de la consulta
+            
             $result = $sentencia->get_result();
 
-            // Verificar si se encontraron usuarios
+            
             if ($result->num_rows > 0) {
-                // Recorrer los resultados
+                
                 while ($user = $result->fetch_assoc()) {
-                    // Verificar si la contraseña coincide
+                    
                     if (password_verify($password, $user["contraseña"])) {
                         $_SESSION['usuario_id']=$user["id"];
                         $_SESSION['usuario_nombre']=$user["nombre"];
@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo "No existe en la base de datos";
             }
 
-            // Cerrar la conexión
             $conexion->close();
         } catch (Exception $e) {
             echo "Hubo un error de conexión: " . $e->getMessage();

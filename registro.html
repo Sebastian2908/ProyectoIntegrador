@@ -29,7 +29,7 @@
                         <div class="card">
                             <div class="card-header">Formulario de Registro</div>
                             <div class="card-body">
-                                <form action="registro.php" method="post">  
+                                <form action="registro.php" id="formularioDeRegistro" method="post">  
 
                                     <div class="row mb-3">
                                         <div class="col">
@@ -53,17 +53,19 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Contraseña:</label>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="Escribe tu contraseña" required />
+                                                <input type="password" class="form-control" name="password" id="password" placeholder="Escribe tu contraseña" required />
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Confirmar Contraseña:</label>
                                                 <input type="password" class="form-control" name="confirmarPassword" id="confirmarPassword" placeholder="Confirma tu contraseña" required />
+                                                <div class="invalid-feedback">La contraseña no coincide</div>
                                             </div>
                                         </div>
                                     </div>
                                     <input type="submit" class="btn btn-success" value="Registrarse">
+                                    <a href="login.html" class="btn btn-secondary">Iniciar Sesion</a>
                                 </form> 
                             </div>
                             <div class="card-footer text-muted"></div>
@@ -87,5 +89,22 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById("formularioDeRegistro").addEventListener('submit', function(event) {
+                    var password = document.getElementById("password").value;
+                    var confirmarPassword = document.getElementById("confirmarPassword").value;
+        
+                    if (password !== confirmarPassword) {
+                        document.getElementById('confirmarPassword').classList.add('is-invalid');
+                        event.preventDefault();
+                    } else {
+                        document.getElementById('confirmarPassword').classList.remove('is-invalid');
+                    }
+                });
+            });
+        </script>
+        
     </body>
 </html>
