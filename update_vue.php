@@ -1,15 +1,22 @@
 <?php
 include 'conexion.php';
 
+$row = null; // Inicializamos la variable $row
+
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM vuelos WHERE id=$id";
-    $result = $conn->query($sql);
+    $id = intval($_GET['id']); // Asegurarse de que id sea un entero
+
+    // Utilizar prepared statements para mayor seguridad
+    $stmt = $conn->prepare("SELECT * FROM vuelos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $row = $result->fetch_assoc();
+    $stmt->close();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+    $id = intval($_POST['id']);
     $vuelo_numero = $_POST['vuelo_numero'];
     $destino = $_POST['destino'];
     $fecha = $_POST['fecha'];
@@ -17,23 +24,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $seccion = $_POST['seccion'];
     $aerolinea = $_POST['aerolinea'];
 
-    $sql = "UPDATE vuelos SET vuelo_numero='$vuelo_numero', destino='$destino', fecha='$fecha', hora='$hora', seccion='$seccion', aerolinea='$aerolinea' WHERE id=$id";
+    // Utilizar prepared statements para mayor seguridad
+    $stmt = $conn->prepare("UPDATE vuelos SET Numero_vuelo = ?, Destino = ?, Fecha = ?, Hora = ?, Seccion = ?, Aerolinea = ? WHERE id = ?");
+    $stmt->bind_param("ssssssi", $vuelo_numero, $destino, $fecha, $hora, $seccion, $aerolinea, $id);
 
-    if ($conn->query($sql) === TRUE) {
+    if ($stmt->execute() === TRUE) {
         echo "Vuelo actualizado exitosamente";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
+    $stmt->close();
 }
 ?>
 
 <form method="POST">
-    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-    Número de Vuelo: <input type="text" name="vuelo_numero" value="<?php echo $row['vuelo_numero']; ?>"><br>
-    Destino: <input type="text" name="destino" value="<?php echo $row['destino']; ?>"><br>
-    Fecha: <input type="date" name="fecha" value="<?php echo $row['fecha']; ?>"><br>
-    Hora: <input type="time" name="hora" value="<?php echo $row['hora']; ?>"><br>
-    Seccion: <input type="text" name="seccion" value="<?php echo $row['seccion']; ?>"><br>
-    Aerolinea: <input type="text" name="aerolinea" value="<?php echo $row['aerolinea']; ?>"><br>
+    <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id'] ?? ''); ?>">
+    Número de Vuelo: <input type="text" name="vuelo_numero" value="<?php echo htmlspecialchars($row['Numero_vuelo'] ?? ''); ?>" required><br>
+    Destino: <input type="text" name="destino" value="<?php echo htmlspecialchars($row['Destino'] ?? ''); ?>" required><br>
+    Fecha: <input type="date" name="fecha" value="<?php echo htmlspecialchars($row['Fecha'] ?? ''); ?>" required><br>
+    Hora: <input type="time" name="hora" value="<?php echo htmlspecialchars($row['Hora'] ?? ''); ?>" required><br>
+    Sección: <input type="text" name="seccion" value="<?php echo htmlspecialchars($row['Seccion'] ?? ''); ?>" required><br>
+    Aerolínea: <input type="text" name="aerolinea" value="<?php echo htmlspecialchars($row['Aerolinea'] ?? ''); ?>" required><br>
     <button type="submit">Actualizar Vuelo</button>
 </form>

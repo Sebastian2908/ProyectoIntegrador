@@ -6,15 +6,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $destino = $_POST['destino'];
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
-    $seccio = $_POST['seccion'];
+    $seccion = $_POST['seccion'];
     $aerolinea = $_POST['aerolinea'];
 
-    $sql = "INSERT INTO vuelos (vuelo_numero, destino, fecha, hora, precio) VALUES ('$vuelo_numero', '$destino', '$fecha', '$hora', '$seccion', '$aerolinea')";
+    $sql = "INSERT INTO vuelos (Numero_vuelo, Destino, Fecha, Hora, Seccion, Aerolinea) VALUES ('$vuelo_numero', '$destino', '$fecha', '$hora', '$seccion', '$aerolinea')";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conexion->query($sql) === TRUE) {
         echo "Nuevo vuelo agendado exitosamente";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conexion->error;
     }
 }
 ?>
