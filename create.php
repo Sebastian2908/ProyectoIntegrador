@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vuelo_numero = $_POST['vuelo_numero'];

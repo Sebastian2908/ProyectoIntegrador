@@ -1,8 +1,8 @@
 <?php
-include 'db.php';
+include("conexion.php");
 
 $sql = "SELECT * FROM vuelos";
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 ?>
 
 <h2>Lista de Vuelos</h2>
