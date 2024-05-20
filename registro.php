@@ -1,4 +1,5 @@
 <?php
+$contraseña1 = $nombre = $apellido = $correo = $conexion = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include("conexion.php");
@@ -17,9 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$nombre', '$apellido', '$correo', '$hashedContraseña', 2)";
 
     if ($conexion->query($sql) === TRUE) {
-        echo "Registro exitoso";
-
-        header("Location:login.html");
+        echo "<script>
+                alert('Registro exitoso');
+                setTimeout(function() {
+                    window.location.href = 'login.html';
+                }, 500); 
+            </script>";
     } else {
         echo "Error al registrar usuario: " . $conexion->error;
     }
@@ -28,3 +32,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexion->close();
 
 ?>
+
+

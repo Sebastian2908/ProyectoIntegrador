@@ -37,9 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $_SESSION['usuario_id']=$user["id"];
                         $_SESSION['usuario_nombre']=$user["nombre"];
                         
-                        header("Location:index.php");
+                        if ($user["id_rol"] == 1) { 
+                            header("Location:admin/admin.php");
+                        } else {
+                            header("Location:index.php");
+                        }
                     } else {
-                        echo "La contraseña es incorrecta";
+                        echo "<script>
+                                alert('Contraseña o Correo Incorrecto');
+                                setTimeout(function() {
+                                    window.location.href = 'login.html';
+                                }, 500); 
+                            </script>";
                     }
                 }
             } else {
