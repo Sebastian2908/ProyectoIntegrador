@@ -1,11 +1,11 @@
-<!-- <?php 
+<?php 
     session_start();
 
     if (!isset($_SESSION['usuario_id'])) {
         header("Location:../login.html");
         exit();
     }
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,11 +17,11 @@
     <title>Document</title>
 </head>
     <body>
-        <nav class="slidebar">
+        <nav class="sidebar close">
             <header>
                 <div class="image-text">
                     <span class="image">
-                        <img src="../imagenes/aereopuerto.png" alt="logo">
+                        <img id="logo-img" src="../imagenes/aereopuerto.png" alt="logo">
                     </span>
 
                     <div class="text header-text">
@@ -92,5 +92,13 @@
             </div>
         </nav>
 
+        <div class="home">
+            <div class="text">Inicio Adiministrador</div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ratione minima adipisci, incidunt quibusdam error dolor est ipsam magni dicta debitis. Similique voluptas voluptatem nemo. Ipsum nostrum amet dolorem ullam.
+            </p>
+        </div>
+
+        <script src="../js/script.js"></script>
     </body>
 </html>

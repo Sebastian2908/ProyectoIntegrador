@@ -1,11 +1,11 @@
-<!-- <?php 
+<?php 
     session_start();
 
     if (!isset($_SESSION['usuario_id'])) {
-        header("Location:login.html");
+        header("Location:../login.html");
         exit();
     }
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,12 +17,11 @@
     <title>Document</title>
 </head>
     <body>
-        <!-- <a href="admin_cerrar.php">Cerrar sesion</a> -->
-        <nav class="slidebar">
+        <nav class="sidebar close">
             <header>
                 <div class="image-text">
                     <span class="image">
-                        <img src="imagenes/aereopuerto.png" alt="logo">
+                        <img id="logo-img" src="imagenes/aereopuerto.png" alt="logo">
                     </span>
 
                     <div class="text header-text">
@@ -38,21 +37,68 @@
                 <div class="menu">
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="index.php">
+                            <a href="admin.php">
                                 <i class='bx bx-home-alt icon'></i>
                                 <span class="text nav-text">Inicio</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="cerrar.php">
-                                <i class='bx bx-log-out icon'></i>
-                                <span class="text nav-text">Cerrar Sesion</span>
+                            <a href="#">
+                                <i class='bx bx-comment-add icon' ></i>
+                                <span class="text nav-text">Agregar Vuelo</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-list-ul icon'></i>
+                                <span class="text nav-text">Lista de vuelos</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bxs-plane icon'></i>
+                                <span class="text nav-text">Gestionar Aerolíneas</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-user icon'></i>
+                                <span class="text nav-text">Usuarios</span>
                             </a>
                         </li>
                     </ul>
                 </div>
+                <br>
+                <br>
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="cerrar.php">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text">Cerrar Sesion</span>
+                        </a>
+                    </li>
+                    <li class="mode">
+                        <div class="moon-sun">
+                            <i class="bx bx-moon icon moon"></i>
+                            <i class="bx bx-sun icon sun"></i>
+                        </div>
+                        <span class="mode-text text">Modo Oscuro</span>
+
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </div>
             </div>
         </nav>
 
+        <div class="home">
+            <div class="text">Inicio Usuario</div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ratione minima adipisci, incidunt quibusdam error dolor est ipsam magni dicta debitis. Similique voluptas voluptatem nemo. Ipsum nostrum amet dolorem ullam.
+            </p>
+        </div>
+
+        <script src="js/script1.0.js"></script>
     </body>
 </html>
