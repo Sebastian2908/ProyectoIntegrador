@@ -3,7 +3,14 @@
 
     if (!isset($_SESSION['usuario_id'])) {
         header("Location:../login.html");
+
         exit();
+    }
+
+    include('../conexion.php');
+    $query = mysqli_query($conexion, "SELECT id, nombre, apellido, correo, id_rol FROM usuarios");
+    if (!$query) {
+        die('Error en la consulta: ' . mysqli_error($conexion));
     }
 ?>
 
@@ -61,7 +68,7 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="usuarios.php">
+                            <a href="#">
                                 <i class='bx bx-user icon'></i>
                                 <span class="text nav-text">Usuarios</span>
                             </a>
@@ -72,7 +79,7 @@
                 <br>
                 <div class="bottom-content">
                     <li class="">
-                        <a href="admin_cerrar.php">
+                        <a href="admin_cerrar.php" onclick="return confirm('¿Deseas Cerrar Sesión?');">
                             <i class='bx bx-log-out icon'></i>
                             <span class="text nav-text">Cerrar Sesion</span>
                         </a>
@@ -93,12 +100,36 @@
         </nav>
 
         <div class="home">
-            <div class="text">Inicio Adiministrador</div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ratione minima adipisci, incidunt quibusdam error dolor est ipsam magni dicta debitis. Similique voluptas voluptatem nemo. Ipsum nostrum amet dolorem ullam.
-            </p>
-        </div>
+            <div class="text">Usuarios</div>
+            <br>
+            <a href="crear_usuarios.php" class="nuevoUsuario">Nuevo Usuario</a>
+            <br>
+            <br>
+                <table class="tablaUsuarios">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?Php while($row = mysqli_fetch_array($query)): ?>
+                        <tr>
+                            <th><?= $row['id']?></th>
+                            <th><?= $row['nombre']?></th>
+                            <th><?= $row['apellido']?></th>
+                            <th><?= $row['correo']?></th>    
 
+                            <th><a href="editar_usuarios.php?id=<?= $row['id'] ?>">Editar</a></th>
+                            <td><a href="eliminar_usuarios.php?id=<?= $row['id'] ?>" onclick="return confirm('¿Quieres ELIMINAR este registro?');">Eliminar</a></td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+        </div>
         <script src="../js/script.js"></script>
     </body>
 </html>
