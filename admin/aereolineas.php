@@ -54,12 +54,12 @@
                             <span class="text nav-text">Agregar Vuelo</span>
                         </a>
                     </li>
-                    <li class="nav-link">
+                    <!-- <li class="nav-link">
                         <a href="lista_vuelos.php">
                             <i class='bx bx-list-ul icon'></i>
                             <span class="text nav-text">Lista de vuelos</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-link">
                         <a href="gestionar_aerolineas.php">
                             <i class='bx bxs-plane icon'></i>

@@ -375,6 +375,7 @@ tr:nth-child(even){
 }
 
 .formulariousuarios input[type="text"],
+.formulariousuarios input[type="tel"],
 .formulariousuarios input[type="date"],
 .formulariousuarios input[type="time"],
 .formulariousuarios input[type="email"],
@@ -410,4 +411,63 @@ tr:nth-child(even){
 .volver_usuarios{
     text-decoration: none;
     color: black;
+}
+
+.vuelos-disponibles, .todos-los-vuelos {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.vuelos-disponibles h2, .todos-los-vuelos h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.vuelos-disponibles ul, .todos-los-vuelos ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.vuelos-disponibles li, .todos-los-vuelos li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vuelos-disponibles li:hover, .todos-los-vuelos li:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-comprar {
+    color: white;
+    background-color: var(--primary-color); 
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn-comprar:hover {
+    background-color: #056997;
+}
+
+.mis-vuelos {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mis-vuelos li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mis-vuelos li:hover {
+    background-color: #f0f0f0;
 }

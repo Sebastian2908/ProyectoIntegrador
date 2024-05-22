@@ -54,15 +54,15 @@
                         <li class="nav-link">
                             <a href="vuelos.php">
                                 <i class='bx bx-comment-add icon' ></i>
-                                <span class="text nav-text">Agregar Vuelo</span>
+                                <span class="text nav-text">Gestionar Vuelos</span>
                             </a>
                         </li>
-                        <li class="nav-link">
+                        <!-- <li class="nav-link">
                             <a href="#">
                                 <i class='bx bx-list-ul icon'></i>
                                 <span class="text nav-text">Lista de vuelos</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-link">
                             <a href="aereolineas.php">
                                 <i class='bx bxs-plane icon'></i>
@@ -103,16 +103,16 @@
 
         <div class="home">
             <div id="main-container">
-                <div class="text">Usuarios</div>
+                <div class="text">Vuelos</div>
                 <br>
                 <a href="crear_vuelo.php" class="nuevoUsuario">Nuevo Vuelo</a>
                 <br>
                 <br>
-                    <table class="tablaUsuarios">
+                    <table class="tablaUsuarios tablaVuelos">
                         <thead>
                             <tr>
                                 <!-- <th>ID</th> -->
-                                <th>Número de Vuelo</th>
+                                <th># Vuelo</th>
                                 <th>Aerolínea</th>
                                 <th>Origen</th>
                                 <th>Destino</th>
@@ -122,6 +122,7 @@
                                 <th>Hora de Llegada</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -138,7 +139,8 @@
                                 <td><?= $row['fecha_llegada']?></td>
                                 <td><?= $row['hora_llegada']?></td>
                                 <td><?= $row['estado']?></td>
-
+                                
+                                <td><a href="pasajeros.php?id=<?= $row['id'] ?>" class="btn-editar">Pasajeros</a></td>
                                 <td><a href="editar_vuelo.php?id=<?= $row['id'] ?>" class="btn-editar">Editar</a></td>
                                 <td><a href="eliminar_vuelo.php?id=<?= $row['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Quieres ELIMINAR este registro?');">Eliminar</a></td>
                             </tr>

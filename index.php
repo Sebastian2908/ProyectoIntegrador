@@ -37,26 +37,20 @@
                 <div class="menu">
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="admin.php">
+                            <a href="index.php">
                                 <i class='bx bx-home-alt icon'></i>
                                 <span class="text nav-text">Inicio</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bx-comment-add icon' ></i>
-                                <span class="text nav-text">Agregar Vuelo</span>
+                            <a href="mis_vuelos.php">
+                            <i class='bx bxs-plane icon'></i> 
+                                <span class="text nav-text">Mis Vuelos</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bx-list-ul icon'></i>
-                                <span class="text nav-text">Lista de vuelos</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bxs-plane icon'></i>
+                            <a href="mis_vuelos.php">
+                            <i class='bx bx-list-ul icon'></i>
                                 <span class="text nav-text">Gestionar Aerolíneas</span>
                             </a>
                         </li>
@@ -77,28 +71,27 @@
                             <span class="text nav-text">Cerrar Sesion</span>
                         </a>
                     </li>
-                    <li class="mode">
-                        <div class="moon-sun">
-                            <i class="bx bx-moon icon moon"></i>
-                            <i class="bx bx-sun icon sun"></i>
-                        </div>
-                        <span class="mode-text text">Modo Oscuro</span>
-
-                        <div class="toggle-switch">
-                            <span class="switch"></span>
-                        </div>
-                    </li>
                 </div>
             </div>
         </nav>
 
         <div class="home">
-            <div class="text">Inicio Usuario</div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ratione minima adipisci, incidunt quibusdam error dolor est ipsam magni dicta debitis. Similique voluptas voluptatem nemo. Ipsum nostrum amet dolorem ullam.
-            </p>
+            <div id="main-container">
+                <form action="buscar_vuelos.php" method="POST" class="formulariousuarios">
+                <h1>Buscar Vuelos Disponibles</h1>
+                    <div class="input-group">
+                        <label for="origen">Origen:</label>
+                        <input type="text" name="origen" ><br><br>
+                        
+                        <label for="destino">Destino:</label>
+                        <input type="text" name="destino" ><br><br>
+                    </div>   
+                    <label for="fecha">Fecha de Viaje:</label>
+                    <input type="date" name="fecha"><br><br>
+                    <input type="submit" value="Buscar Vuelos">
+                </form>
+            </div>
         </div>
-
         <script src="js/script1.0.js"></script>
     </body>
 </html>

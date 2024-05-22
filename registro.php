@@ -3,7 +3,7 @@ $contraseña1 = $nombre = $apellido = $correo = $conexion = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include("conexion.php");
-    // Obtener los datos del formulario
+    
     $nombre = isset($_POST['name']) ? $_POST['name'] : null;
     $apellido = isset($_POST['lastname']) ? $_POST['lastname'] : null;
     $correo = isset($_POST['email']) ? $_POST['email'] : null;

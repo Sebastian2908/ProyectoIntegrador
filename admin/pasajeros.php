@@ -5,6 +5,15 @@
         header("Location:../login.html");
         exit();
     }
+
+    include('../conexion.php');
+
+    $vuelo_id = $_GET['id'];
+
+    $query_pasajeros = mysqli_query($conexion, "SELECT * FROM pasajeros WHERE id_vuelo = $vuelo_id");
+    if (!$query_pasajeros) {
+        die('Error en la consulta: ' . mysqli_error($conexion));
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +23,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilos.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Document</title>
+    <title>Pasajeros del Vuelo</title>
 </head>
-    <body>
-        <nav class="sidebar close">
+<body>
+<nav class="sidebar close">
             <header>
                 <div class="image-text">
                     <span class="image">
@@ -72,33 +81,46 @@
                 <br>
                 <div class="bottom-content">
                     <li class="">
-                        <a href="admin_cerrar.php">
+                        <a href="admin_cerrar.php" onclick="return confirm('¿Deseas Cerrar Sesión?');">
                             <i class='bx bx-log-out icon'></i>
                             <span class="text nav-text">Cerrar Sesion</span>
                         </a>
                     </li>
-                    <!-- <li class="mode">
-                        <div class="moon-sun">
-                            <i class="bx bx-moon icon moon"></i>
-                            <i class="bx bx-sun icon sun"></i>
-                        </div>
-                        <span class="mode-text text">Modo Oscuro</span>
-
-                        <div class="toggle-switch">
-                            <span class="switch"></span>
-                        </div>
-                    </li> -->
                 </div>
             </div>
         </nav>
 
-        <div class="home">
-            <div class="text">Inicio Adiministrador</div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ratione minima adipisci, incidunt quibusdam error dolor est ipsam magni dicta debitis. Similique voluptas voluptatem nemo. Ipsum nostrum amet dolorem ullam.
-            </p>
+    <div class="home">
+        <div id="main-container">
+            <div class="text">Pasajeros del Vuelo</div>
+            <br>
+            <a href="vuelos.php" class="nuevoUsuario">Vuelos</a>
+            <br>
+            <br>
+            <table class="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Fecha de Nacimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while($row_pasajero = mysqli_fetch_array($query_pasajeros)): ?>
+                    <tr>
+                        <td><?= $row_pasajero['id']?></td>
+                        <td><?= $row_pasajero['nombre']?></td>
+                        <td><?= $row_pasajero['apellido']?></td>
+                        <td><?= $row_pasajero['telefono']?></td>
+                        <td><?= $row_pasajero['fecha_nacimiento']?></td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         </div>
-
-        <script src="../js/script.js"></script>
-    </body>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
 </html>
