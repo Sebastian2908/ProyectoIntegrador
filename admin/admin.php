@@ -72,7 +72,7 @@
                 <br>
                 <div class="bottom-content">
                     <li class="">
-                        <a href="admin_cerrar.php">
+                        <a href="admin_cerrar.php" onclick="return confirm('¿Deseas Cerrar Sesión?');">
                             <i class='bx bx-log-out icon'></i>
                             <span class="text nav-text">Cerrar Sesion</span>
                         </a>

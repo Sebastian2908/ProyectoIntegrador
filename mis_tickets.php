@@ -1,24 +1,25 @@
-<?php 
+<?php
 session_start();
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location:../login.html");
+    header("Location: ../login.html");
     exit();
 }
 
 include('conexion.php');
 
 $id_usuario = $_SESSION['usuario_id'];
-$sql = "SELECT v.numero_vuelo, v.origen, v.destino, v.fecha_salida, v.hora_salida, v.estado 
+$sql = "SELECT v.numero_vuelo, v.origen, v.destino, v.fecha_salida, v.hora_salida, v.estado, a.nombre as aerolinea, p.nombre as pasajero_nombre, p.apellido as pasajero_apellido
         FROM vuelos v 
         JOIN pasajeros p ON v.id = p.id_vuelo 
+        JOIN aerolineas a ON v.id_aerolinea = a.id 
         WHERE p.id_usuario = ?";
-
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $id_usuario);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,7 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Mis Vuelos</title>
+    <title>Document</title>
 </head>
 <body>
     <nav class="sidebar close">
@@ -84,43 +85,52 @@ $result = $stmt->get_result();
 
     <div class="home">
         <div id="main-container">
-            <h2>Mis Vuelos</h2>
-            <table class="tablaUsuarios">
-                <thead>
-                    <tr>
-                        <th>Número de Vuelo</th>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                        <th>Fecha de Salida</th>
-                        <th>Hora de Salida</th>
-                        <th>Estado del vuelo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row['numero_vuelo'] . "</td>";
-                            echo "<td>" . $row['origen'] . "</td>";
-                            echo "<td>" . $row['destino'] . "</td>";
-                            echo "<td>" . $row['fecha_salida'] . "</td>";
-                            echo "<td>" . $row['hora_salida'] . "</td>";
-                            echo "<td>" . $row['estado'] . "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='5'>No tienes vuelos registrados.</td></tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
+            <div class="ticket-wrapper">
+                <div class="ticket-container">
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="ticket">
+                        <div class="ticket-header">
+                            <h2>TIQUETE</h2>
+                            <h4><span class="name">Aereo<span class="p">P</span>uerto</span></h4>
+                            <h4>INFORMACION DEL VUELO</h4>
+                        </div>
+                        <div class="ticket-body">
+                            <div class="ticket-section">
+                                <p><strong>AEREOLINEA</strong></p>
+                                <p><?= $row['aerolinea'] ?></p>
+                            </div>
+                            <div class="ticket-section">
+                                <p><strong>ORIGEN</strong></p>
+                                <p><?= $row['origen'] ?></p>
+                            </div>
+                            <div class="ticket-section">
+                                <p><strong>DESTINO</strong></p>
+                                <p><?= $row['destino'] ?></p>
+                            </div>
+                            <div class="ticket-section">
+                                <p><strong>PASAGERO</strong></p>
+                                <p><?= $row['pasajero_nombre'] ?> <?= $row['pasajero_apellido'] ?></p>
+                            </div>
+                            <div class="ticket-section">
+                                <p><strong>PARTIDA</strong></p>
+                                <p><?= $row['fecha_salida'] ?> <?= $row['hora_salida'] ?></p>
+                            </div>
+                            <div class="ticket-section">
+                                <p><strong>ESTADO</strong></p>
+                                <p><?= $row['estado'] ?></p>
+                            </div>
+                        </div>
+                        <div class="ticket-footer">
+                            <p>Gracias por elegirnos.</p>
+                            <p>Esté en la puerta a la hora de abordar.</p>
+                        </div>
+                    </div>
+                    <?php endwhile; ?>
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="js/script1.0.js"></script>
 </body>
 </html>
-<?php
-$conexion->close();
-?>
+

@@ -21,10 +21,11 @@
 
 }
 
-body{
+body {
     height: 100vh;
     background: var(--body-color);
     transition: var(--tran-04);
+
 }
 
 body.dark{
@@ -471,3 +472,72 @@ tr:nth-child(even){
 .mis-vuelos li:hover {
     background-color: #f0f0f0;
 }
+
+.ticket-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.ticket-header {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.ticket-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.ticket-header p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.ticket-body {
+    padding: 15px;
+}
+
+.ticket-section {
+    margin-bottom: 10px;
+}
+
+.ticket-section p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.ticket-section p:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.ticket-section p:last-child {
+    color: #555;
+}
+
+.ticket-footer {
+    background: #ecf0f1;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #555;
+}
+
+strong {
+    font-weight: bold;
+}
+

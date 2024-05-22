@@ -61,7 +61,7 @@
                         </a>
                     </li> -->
                     <li class="nav-link">
-                        <a href="gestionar_aerolineas.php">
+                        <a href="aereolineas.php">
                             <i class='bx bxs-plane icon'></i>
                             <span class="text nav-text">Gestionar Aerolíneas</span>
                         </a>
@@ -88,36 +88,37 @@
     </nav>
 
     <div class="home">
-            <div id="main-container">
-                <div class="text">Aereolineas</div>
-                <br>
-                <a href="crear_aereolinea.php" class="nuevoUsuario">Nueva Aereolinea</a>
-                <br>
-                <br>
-                    <table class="tablaUsuarios">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Codigo</th>
-                                <th>Acciones</th>
-                                <th></th>   
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?Php while($row = mysqli_fetch_array($query)): ?>
-                            <tr>
-                                <th><?= $row['id']?></th>
-                                <th><?= $row['nombre']?></th>
-                                <th><?= $row['codigo']?></th>  
+        <div id="main-container">
+            <div class="text">Aereolineas</div>
+            <br>
+            <a href="crear_aereolinea.php" class="nuevoUsuario">Nueva Aereolinea</a>
+            <br>
+            <br>
+            <table class="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Codigo</th>
+                        <th>Acciones</th>
+                        <th></th>   
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?Php while($row = mysqli_fetch_array($query)): ?>
+                        <tr>
+                            <th><?= $row['id']?></th>
+                            <th><?= $row['nombre']?></th>
+                            <th><?= $row['codigo']?></th>  
 
-                                <th><a href="editar_aereolinea.php?id=<?= $row['id'] ?>" class="btn-editar">Editar</a></th>
-                                <td><a href="eliminar_aereolinea.php?id=<?= $row['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Quieres ELIMINAR este registro?');">Eliminar</a></td>
-                            </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
-            </div>
+                            <th><a href="editar_aereolinea.php?id=<?= $row['id'] ?>" class="btn-editar">Editar</a></th>
+                            <td><a href="eliminar_aereolinea.php?id=<?= $row['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Quieres ELIMINAR este registro?');">Eliminar</a></td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+        </div>
+    </div>
     <script src="../js/script.js"></script>
 </body>
 </html>

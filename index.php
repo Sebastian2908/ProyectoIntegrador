@@ -49,15 +49,9 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="mis_vuelos.php">
-                            <i class='bx bx-list-ul icon'></i>
-                                <span class="text nav-text">Gestionar Aerolíneas</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bx-user icon'></i>
-                                <span class="text nav-text">Usuarios</span>
+                            <a href="mis_tickets.php">
+                            <i class='bx bxs-plane-take-off icon'></i>
+                                <span class="text nav-text">Tiquetes de vuelo</span>
                             </a>
                         </li>
                     </ul>
@@ -66,7 +60,7 @@
                 <br>
                 <div class="bottom-content">
                     <li class="">
-                        <a href="cerrar.php">
+                        <a href="cerrar.php" onclick="return confirm('¿Deseas Cerrar Sesión?');">
                             <i class='bx bx-log-out icon'></i>
                             <span class="text nav-text">Cerrar Sesion</span>
                         </a>
