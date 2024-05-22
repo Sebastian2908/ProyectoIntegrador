@@ -115,10 +115,6 @@ $result = $stmt->get_result();
                                 <p><strong>PARTIDA</strong></p>
                                 <p><?= $row['fecha_salida'] ?> <?= $row['hora_salida'] ?></p>
                             </div>
-                            <div class="ticket-section">
-                                <p><strong>ESTADO</strong></p>
-                                <p><?= $row['estado'] ?></p>
-                            </div>
                         </div>
                         <div class="ticket-footer">
                             <p>Gracias por elegirnos.</p>

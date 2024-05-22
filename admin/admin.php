@@ -94,9 +94,9 @@
 
         <div class="home">
             <div class="text">Inicio Adiministrador</div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ratione minima adipisci, incidunt quibusdam error dolor est ipsam magni dicta debitis. Similique voluptas voluptatem nemo. Ipsum nostrum amet dolorem ullam.
-            </p>
+            <div class="imagen-container">
+                <img src="../imagenes/aereopuerto2.png" class="imagen-admin" alt="">
+            </div>
         </div>
 
         <script src="../js/script.js"></script>
