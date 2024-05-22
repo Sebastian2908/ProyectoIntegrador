@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="vuelos.php">
                                 <i class='bx bx-comment-add icon' ></i>
                                 <span class="text nav-text">Agregar Vuelo</span>
                             </a>
@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="aereolineas.php">
                                 <i class='bx bxs-plane icon'></i>
                                 <span class="text nav-text">Gestionar Aerolíneas</span>
                             </a>
@@ -77,7 +77,7 @@
                             <span class="text nav-text">Cerrar Sesion</span>
                         </a>
                     </li>
-                    <li class="mode">
+                    <!-- <li class="mode">
                         <div class="moon-sun">
                             <i class="bx bx-moon icon moon"></i>
                             <i class="bx bx-sun icon sun"></i>
@@ -87,7 +87,7 @@
                         <div class="toggle-switch">
                             <span class="switch"></span>
                         </div>
-                    </li>
+                    </li> -->
                 </div>
             </div>
         </nav>

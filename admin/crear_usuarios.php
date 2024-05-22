@@ -16,7 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query_insert = mysqli_query($conexion, $sql_insert);
 
     if ($query_insert) {
-        header("Location: usuarios.php");
+        echo "<script>
+                alert('Registro exitoso');
+                setTimeout(function() {
+                    window.location.href = 'usuarios.php';
+                }, 500); 
+             </script>";
     } else {
         echo "Error al crear el usuario: " . mysqli_error($conexion);
     }
@@ -32,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Crear Usuario</title>
 </head>
 <body>
-<div>
-    <form action="crear_usuarios.php" method="POST">
+<div id="container_formulario_usuarios">
+    <form action="crear_usuarios.php" method="POST" class="formulariousuarios">
         <h1>Crear Usuario</h1>
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="text" name="apellido" placeholder="Apellido" required>
-        <input type="email" name="correo" placeholder="Correo" required>
-        <input type="password" name="contraseña" placeholder="Contraseña" required>
+        <input type="text" name="nombre" placeholder="Nombre" required><br>
+        <input type="text" name="apellido" placeholder="Apellido" required><br>
+        <input type="email" name="correo" placeholder="Correo" required><br>
+        <input type="password" name="contraseña" placeholder="Contraseña" required><br>
 
         <label for="id_rol">Rol:</label>
         <select name="id_rol">
@@ -47,9 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?= $row_roles['descripcion'] ?>
                 </option>
             <?php endwhile; ?>
-        </select>
+        </select><br>
 
         <input type="submit" value="Crear Usuario">
+        <br>
+        <br>
+        <a href="usuarios.php" class="volver_usuarios">Atras</a>
     </form>
 </div>
 </body>

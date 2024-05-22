@@ -8,7 +8,9 @@
     }
 
     include('../conexion.php');
-    $query = mysqli_query($conexion, "SELECT id, nombre, apellido, correo, id_rol FROM usuarios");
+    $query = mysqli_query($conexion, "SELECT v.id, v.numero_vuelo, a.nombre AS aerolinea, v.origen, v.destino, v.fecha_salida, v.hora_salida, v.fecha_llegada, v.hora_llegada, v.estado 
+                                      FROM vuelos v 
+                                      JOIN aerolineas a ON v.id_aerolinea = a.id");
     if (!$query) {
         die('Error en la consulta: ' . mysqli_error($conexion));
     }
@@ -103,30 +105,42 @@
             <div id="main-container">
                 <div class="text">Usuarios</div>
                 <br>
-                <a href="crear_usuarios.php" class="nuevoUsuario">Nuevo Usuario</a>
+                <a href="crear_vuelo.php" class="nuevoUsuario">Nuevo Vuelo</a>
                 <br>
                 <br>
                     <table class="tablaUsuarios">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Email</th>
+                                <!-- <th>ID</th> -->
+                                <th>Número de Vuelo</th>
+                                <th>Aerolínea</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Fecha de Salida</th>
+                                <th>Hora de Salida</th>
+                                <th>Fecha de Llegada</th>
+                                <th>Hora de Llegada</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
-                                <th></th>   
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?Php while($row = mysqli_fetch_array($query)): ?>
+                        <?php while($row = mysqli_fetch_array($query)): ?>
                             <tr>
-                                <th><?= $row['id']?></th>
-                                <th><?= $row['nombre']?></th>
-                                <th><?= $row['apellido']?></th>
-                                <th><?= $row['correo']?></th>    
+                                <!-- <td><?= $row['id']?></td> -->
+                                <td><?= $row['numero_vuelo']?></td>
+                                <td><?= $row['aerolinea']?></td>
+                                <td><?= $row['origen']?></td>
+                                <td><?= $row['destino']?></td>
+                                <td><?= $row['fecha_salida']?></td>
+                                <td><?= $row['hora_salida']?></td>
+                                <td><?= $row['fecha_llegada']?></td>
+                                <td><?= $row['hora_llegada']?></td>
+                                <td><?= $row['estado']?></td>
 
-                                <th><a href="editar_usuarios.php?id=<?= $row['id'] ?>" class="btn-editar">Editar</a></th>
-                                <td><a href="eliminar_usuarios.php?id=<?= $row['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Quieres ELIMINAR este registro?');">Eliminar</a></td>
+                                <td><a href="editar_vuelo.php?id=<?= $row['id'] ?>" class="btn-editar">Editar</a></td>
+                                <td><a href="eliminar_vuelo.php?id=<?= $row['id'] ?>" class="btn-eliminar" onclick="return confirm('¿Quieres ELIMINAR este registro?');">Eliminar</a></td>
                             </tr>
                             <?php endwhile; ?>
                         </tbody>
@@ -136,3 +150,6 @@
         <script src="../js/script.js"></script>
     </body>
 </html>
+
+
+

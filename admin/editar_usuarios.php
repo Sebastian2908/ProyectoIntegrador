@@ -21,7 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query_update = mysqli_query($conexion, $sql_update);
 
     if ($query_update) {
-        header("Location: usuarios.php");
+        echo "<script>
+                alert('Registro actualizado');
+                setTimeout(function() {
+                    window.location.href = 'usuarios.php';
+                }, 500); 
+             </script>";
     } else {
         echo "Error al actualizar el usuario: " . mysqli_error($conexion);
     }
@@ -38,14 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Editar Usuario</title>
 </head>
 <body>
-    <div>
-        <form action="editar_usuarios.php?id=<?= $id ?>" method="POST">
+<div id="container_formulario_usuarios">
+        <form action="editar_usuarios.php?id=<?= $id ?>" method="POST" class="formulariousuarios">
             <h1>Editar Usuario</h1>
 
             <input type="hidden" name="id" value="<?= $row_usuario['id'] ?>">
-            <input type="text" name="nombre" placeholder="Nombre" value="<?= $row_usuario['nombre'] ?>">
-            <input type="text" name="apellido" placeholder="Apellido" value="<?= $row_usuario['apellido'] ?>">
-            <input type="email" name="correo" placeholder="Correo" value="<?= $row_usuario['correo'] ?>">
+            <input type="text" name="nombre" placeholder="Nombre" value="<?= $row_usuario['nombre'] ?>" require>
+            <input type="text" name="apellido" placeholder="Apellido" value="<?= $row_usuario['apellido'] ?>" require>
+            <input type="email" name="correo" placeholder="Correo" value="<?= $row_usuario['correo'] ?>" require>
             
             <label for="id_rol">Rol:</label>
             <select name="id_rol">
@@ -57,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </select>
 
             <input type="submit" value="Actualizar Información">
+            <br>
+            <br>
+            <a href="usuarios.php" class="volver_usuarios">Atras</a>
         </form>
     </div>
 </body>

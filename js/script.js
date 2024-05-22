@@ -18,10 +18,10 @@ const body = document.querySelector("body"),
             logoImg.src = "../imagenes/aereopuerto1.png";
         }
 
-        if (body.classList.contains("dark")) {
-            modeText.innerHTML = "Modo Claro";
-        } else {
-            modeText.innerHTML = "Modo Oscuro";
-        }
+        // if (body.classList.contains("dark")) {
+        //     modeText.innerHTML = "Modo Claro";
+        // } else {
+        //     modeText.innerHTML = "Modo Oscuro";
+        // }
 
       });
